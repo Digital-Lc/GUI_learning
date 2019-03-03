@@ -22,6 +22,12 @@ def clear():
     input_text.set("")
     answer_value.set("")
 
+def backspace():
+    current_text = input_text.get()
+    new_text = current_text[0:len(current_text)-1]
+    input_text.set(new_text)
+
+
 button1 = Button(root, text="7", width=3, command=lambda:add_to_input_text("7")).grid(row=1, column=0, sticky=N+S+W+E)
 button2 = Button(root, text="8", width=3, command=lambda:add_to_input_text("8")).grid(row=1, column=1, sticky=N+S+W+E)
 button3 = Button(root, text="9", width=3, command=lambda:add_to_input_text("9")).grid(row=1, column=2, sticky=N+S+W+E)
