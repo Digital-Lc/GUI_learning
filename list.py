@@ -11,7 +11,7 @@ def open_new_note():
     new_note_title = Label(new_note_window, text="New Note")
     new_note_title.grid()
 
-    title_label = Label(new_note_window, text="Tilte:")
+    title_label = Label(new_note_window, text="Title:")
     title_label.grid()
     
     title_entry = Entry(new_note_window)
@@ -20,8 +20,19 @@ def open_new_note():
     note_label = Label(new_note_window, text="Note text")
     note_label.grid()
 
-    note_entry = Entry(new_note_window)
-    note_entry.grid()
+    note_text = Text(new_note_window)
+    note_text.config(height=10, width=20)
+    note_text.grid()
+
+    button_frame = Frame(new_note_window)
+    button_frame.grid()
+    
+    cancel_button = Button(button_frame, text="Cancel")
+    cancel_button.grid()
+
+    save_button = Button(button_frame, text="Save")
+    save_button.grid()
+
 
 def open_list(list_name):
     pass
