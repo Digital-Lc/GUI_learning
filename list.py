@@ -1,43 +1,56 @@
 from tkinter import *
+import Note
 
 root = Tk()
 root.title("Notes")
 root.geometry("400x600")
 root.option_add("*font", "Calibri", "30")
 
+
+def save_note(title, body, category="To do"):
+    print(title)
+    print(body)
+    print(category)
+
+    new_note = Note(title, body, category)
+
 def open_new_note():
-    new_note_window = Toplevel (root)
-    
+    print("Open new note window")
+    title_value = StringVar()
+    text_value = StringVar()
+
+    new_note_window = Toplevel(root)
+
     new_note_title = Label(new_note_window, text="New Note")
     new_note_title.grid()
 
     title_label = Label(new_note_window, text="Title:")
-    title_label.grid()
-    
+    title_label.grid(sticky=W)
+
     title_entry = Entry(new_note_window, textvariable=title_value)
     title_entry.grid()
 
-    note_label = Label(new_note_window, text="Note text")
-    note_label.grid()
+    note_label = Label(new_note_window, text="Note text:")
+    note_label.grid(sticky=W)
 
-    note_text = Text(new_note_window, textvariable=text_value)
+    note_text = Text(new_note_window)
     note_text.config(height=10, width=20)
     note_text.grid()
 
     button_frame = Frame(new_note_window)
     button_frame.grid()
-    
+
     cancel_button = Button(button_frame, text="Cancel", command=new_note_window.destroy)
     cancel_button.grid(row=0, column=1, sticky=E)
 
-    save_button = Button(button_frame, text="Save")
+    save_button = Button(button_frame, text="Save", command=lambda: save_note(title_value.get(), note_text.get(1.0, END)))
     save_button.grid(row=0, column=2, sticky=E)
 
-def save_note():
-    pass
 
 def open_list(list_name):
-    pass
+    print("Open a list")
+
+
 
 title = Label(root, text="Notes", bg="light grey", fg="Black")
 title.config(font=("Calibri", "30"), width=24)
