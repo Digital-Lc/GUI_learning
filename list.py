@@ -1,18 +1,34 @@
+class Note:
+    def __init__(self, title, text, category):
+        self.__title = title
+        self.__text = text
+        self.__category = category
+
+    def get_title(self):
+        return self.__title
+
+    def get_text(self):
+        return self.__text
+
+    def get_category(self):
+        return self.__category
+
 from tkinter import *
-import Note
 
 root = Tk()
 root.title("Notes")
 root.geometry("400x600")
 root.option_add("*font", "Calibri", "30")
 
+notes = []
 
-def save_note(title, body, category="To do"):
-    print(title)
-    print(body)
-    print(category)
-
-    new_note = Note(title, body, category)
+def save_note(window,title, body, category="To do"):
+    new_note = Note(title.title().strip(), body.title().strip(), category.title().strip())
+    notes.append(new_note)
+    print("Category: {}".format(new_note.get_category()))
+    print("Title: {}".format(new_note.get_title()))
+    print("Body: {}".format(new_note.get_text()))
+    window.destroy()
 
 def open_new_note():
     print("Open new note window")
@@ -43,7 +59,7 @@ def open_new_note():
     cancel_button = Button(button_frame, text="Cancel", command=new_note_window.destroy)
     cancel_button.grid(row=0, column=1, sticky=E)
 
-    save_button = Button(button_frame, text="Save", command=lambda: save_note(title_value.get(), note_text.get(1.0, END)))
+    save_button = Button(button_frame, text="Save", command=lambda: save_note(new_note_window, title_value.get(), note_text.get(1.0, END)))
     save_button.grid(row=0, column=2, sticky=E)
 
 
