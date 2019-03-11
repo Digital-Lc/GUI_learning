@@ -64,7 +64,15 @@ def open_new_note():
 
 
 def open_list(list_name):
-    print("Open a list")
+    print("Open {}".format(list_name))
+    list_window = Toplevel(root)
+    list_window.title(list_name)
+
+    for note in notes:
+        title = note.get_title()
+        text = note.get_text()
+        category = note.get_category()
+        Label(list_window, text=("{}:\n {}\n\n".format(title, text))).grid(sticky=W)
 
 
 
