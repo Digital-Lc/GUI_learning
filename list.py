@@ -17,7 +17,7 @@ from tkinter import *
 
 root = Tk()
 root.title("Notes")
-root.geometry("400x600")
+root.geometry("397x600")
 root.option_add("*font", "Calibri", "30")
 
 notes = []
@@ -25,9 +25,9 @@ notes = []
 def save_note(window,title, body, category="To do"):
     new_note = Note(title.title().strip(), body.title().strip(), category.title().strip())
     notes.append(new_note)
-    print("Category: {}".format(new_note.get_category()))
-    print("Title: {}".format(new_note.get_title()))
-    print("Body: {}".format(new_note.get_text()))
+    # print("Category: {}".format(new_note.get_category()))
+    # print("Title: {}".format(new_note.get_title()))
+    # print("Body: {}".format(new_note.get_text()))
     window.destroy()
 
 def open_new_note():
@@ -77,23 +77,31 @@ def open_list(list_name):
 
 
 title = Label(root, text="Notes", bg="light grey", fg="Black")
-title.config(font=("Calibri", "30"), width=24)
-title.grid(row=0, sticky=N+S+W+E)
-
-new_note = Button(root, text="+ New note", bg="light grey", fg="black", command=lambda:open_new_note())
-new_note.config(font=("Calibri", "30"))
-new_note.grid(row=1, sticky=W)
+title.config(font=("Calibri", "30"), width=23)
+title.grid(row=0, column=0, columnspan=2, sticky=N+S+W+E)
 
 new_todo = Button(root, text="To do",bg="light grey", fg="black", command=lambda:open_list("To do"))
-new_todo.config(font=("Calibri", "30"))
-new_todo.grid(row=2, sticky=N+S+W+E)
+new_todo.config(font=("Calibri", "30"), width=15)
+new_todo.grid(row=1, column=0, sticky=N+S+W+E)
+
+new_todo_note = Button(root, text="+", bg="light grey", fg="black", command=lambda:open_new_note())
+new_todo_note.config(font=("Calibri", "30"), width=4)
+new_todo_note.grid(row=1, column=1, sticky=W+E)
 
 new_homework = Button(root, text="Homework", bg="light grey", fg="black", command=lambda:open_list("Homework"))
-new_homework.config(font=("Calibri", "30"))
-new_homework.grid(row=3, sticky=N+S+W+E)
+new_homework.config(font=("Calibri", "30"), width=15)
+new_homework.grid(row=2, column=0, sticky=N+S+W+E)
+
+new_todo_note = Button(root, text="+", bg="light grey", fg="black", command=lambda:open_new_note())
+new_todo_note.config(font=("Calibri", "30"), width=4)
+new_todo_note.grid(row=2, column=1, sticky=W+E)
 
 new_date = Button(root, text="Dates", bg="light grey", fg="black", command=lambda:open_list("Dates"))
-new_date.config(font=("Calibri", "30"))
-new_date.grid(row=4, sticky=N+S+W+E)
+new_date.config(font=("Calibri", "30"), width=15)
+new_date.grid(row=3, column=0, sticky=N+S+W+E)
+
+new_todo_note = Button(root, text="+", bg="light grey", fg="black", command=lambda:open_new_note())
+new_todo_note.config(font=("Calibri", "30"), width=4)
+new_todo_note.grid(row=3, column=1, sticky=W+E)
 
 root.mainloop()
