@@ -11,7 +11,6 @@ def place_point(button):
     global next
     print("A player has taken a turn")
 
-
 title = Label(root, text="Tic Tac Toe", width=10, height=3).grid(row=0, column=0, columnspan=3, sticky=N+S+W+E)
 
 button1 = Button(root, text="", width=10, height=5, command=lambda:place_point("")).grid(row=1, column=0, sticky=N+S+W+E)
