@@ -194,7 +194,6 @@ student_selector.grid(row=0, column=0, rowspan=10)
 
 update_button = Button(root, text="Update details>>", command=lambda: update_details()).grid(row=10, column=0,
                                                                                              sticky=E + W)
-
 str_name = StringVar(value="Full name: ")
 str_age = StringVar(value="Age: ")
 str_phone = StringVar(value="Phone:")
