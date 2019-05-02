@@ -21,6 +21,7 @@ class MyStudent:
         self.__age += 1
         print("New age: ", self.__age)
 
+
     def get_phone(self):
         """Getter function - returns the student's phone number"""
         return self.__phone_number
@@ -194,6 +195,9 @@ student_selector.grid(row=0, column=0, rowspan=10)
 
 update_button = Button(root, text="Update details>>", command=lambda: update_details()).grid(row=10, column=0,
                                                                                              sticky=E + W)
+add_a_year = Button(root, text="add year", command=lambda:age.add_one_year())
+add_a_year.grid(row=11)
+
 str_name = StringVar(value="Full name: ")
 str_age = StringVar(value="Age: ")
 str_phone = StringVar(value="Phone:")
