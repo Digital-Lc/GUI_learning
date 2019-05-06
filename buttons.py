@@ -4,6 +4,8 @@ count = 0
 
 def count_up():
     global count
+    if count:
+        print(count)
     count += 1
     print(count)
 
